@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no">
+    <title>Сунтаравтодор</title>
+    <link rel="stylesheet" href="./libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./libs/hystmodal.min.css">
+    <link rel="stylesheet" href="./libs/custom-select.css">
+    <link rel="stylesheet" href="./css/main.css"><script src="https://api-maps.yandex.ru/2.1/?apikey=fb687093-d404-47b8-9cb1-d734158ee9d5&lang=ru_RU" type="text/javascript"></script>
+    <script src="libs/swiper-bundle.min.js"></script>
+    <script src="libs/hystmodal.min.js"></script>
+    <script src="libs/custom-select.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__wrap container"><a class="header__logo" href="/"><svg width="177" height="48" viewBox="0 0 177 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.0217 25.28V28.0567C10.9933 31.4 9.80333 32.4483 6.035 32.4483H4.39167C1.445 32.4483 0 31.145 0 28.3967V17.7433C0 14.5133 1.33167 13.1533 4.39167 13.1533H6.035C9.69 13.1817 10.9933 14.0317 11.0217 16.3833V19.84H6.8V17.375C6.8 16.8083 6.43167 16.5533 5.695 16.5533C4.90167 16.5533 4.53333 16.8083 4.53333 17.375V28.255C4.53333 28.7933 4.90167 29.0483 5.66667 29.0483C6.43167 29.0483 6.8 28.7933 6.8 28.255V25.28H11.0217Z" fill="currentColor"/>
+<path d="M15.5129 27.49L11.5179 13.3517H15.8246L17.6096 22.6167H17.6663L19.4229 13.3517H23.7296L19.4513 28.51C18.4596 31.7683 17.3546 32.505 13.7279 32.4483V29.0767C14.6063 29.0767 15.0029 28.85 15.2579 28.2267L15.5129 27.49Z" fill="currentColor"/>
+<path d="M24.3151 32.25V13.3517H28.6784V20.7467H31.2284V13.3517H35.5918V32.25H31.2284V24.1467H28.6784V32.25H24.3151Z" fill="currentColor"/>
+<path d="M39.6151 32.25V16.7517H36.5551V13.3517H47.0384V16.7517H43.9784V32.25H39.6151Z" fill="currentColor"/>
+<path d="M46.6358 32.25L49.4974 13.3517H56.6091L59.4991 32.25H55.0508L54.4841 27.7167H51.6508L51.0841 32.25H46.6358ZM54.1158 24.4867L53.0958 15.9583H53.0391L52.0191 24.4867H54.1158Z" fill="currentColor"/>
+<path d="M60.5297 32.25V13.3517H66.8197C70.2481 13.3517 71.6647 14.7117 71.6931 17.9417V21.2283C71.6647 25.62 70.4747 26.8383 66.3664 26.8667H64.8931V32.25H60.5297ZM64.8931 23.4667H66.1964C66.8764 23.4667 67.1597 23.07 67.1597 22.0783V17.545C67.1597 16.9217 66.9331 16.7517 66.1681 16.7517H64.8931V23.4667Z" fill="currentColor"/>
+<path d="M101.255 32.25V13.3517H107.715C111.625 13.3517 112.475 14.2017 112.475 18.0833C112.475 21.115 111.908 21.9367 109.613 22.4183V22.475C112.022 22.7583 112.787 23.8917 112.787 27.0083C112.787 30.975 111.71 32.25 108.423 32.25H101.255ZM105.618 16.5817V21.0583H106.667C107.885 21.03 108.112 20.775 108.112 19.3867V18.225C108.112 16.8933 107.857 16.5817 106.667 16.5817H105.618ZM105.618 24.1467V29.02H106.922C108.027 29.02 108.253 28.7367 108.253 27.2633V25.875C108.253 24.4867 107.998 24.1467 106.922 24.1467H105.618Z" fill="currentColor"/>
+<path d="M116.749 32.25V16.7517H113.689V13.3517H124.172V16.7517H121.112V32.25H116.749Z" fill="currentColor"/>
+<path d="M125.281 28.5667V17.035C125.281 14.23 126.868 13.1533 130.948 13.1533C135.028 13.1533 136.615 14.23 136.615 17.035V28.5667C136.615 31.3717 135.028 32.4483 130.92 32.4483C126.84 32.4483 125.281 31.3717 125.281 28.5667ZM132.081 28.34V17.2617C132.081 16.61 131.798 16.3833 130.948 16.3833C130.098 16.3833 129.815 16.5817 129.815 17.2617V28.34C129.815 29.02 130.098 29.2183 130.976 29.2183C131.798 29.2183 132.081 28.9917 132.081 28.34Z" fill="currentColor"/>
+<path d="M150.382 28.85H151.884V36.0183H147.52V32.25H141.882V36.0183H137.519V28.85H138.51C139.219 28.8783 139.417 28.51 139.417 27.1217V13.3517H150.382V28.85ZM146.019 28.85V16.7517H143.78V26.2433C143.78 27.405 143.469 28.255 142.789 28.85H146.019Z" fill="currentColor"/>
+<path d="M152.219 28.5667V17.035C152.219 14.23 153.806 13.1533 157.886 13.1533C161.966 13.1533 163.552 14.23 163.552 17.035V28.5667C163.552 31.3717 161.966 32.4483 157.857 32.4483C153.777 32.4483 152.219 31.3717 152.219 28.5667ZM159.019 28.34V17.2617C159.019 16.61 158.736 16.3833 157.886 16.3833C157.036 16.3833 156.752 16.5817 156.752 17.2617V28.34C156.752 29.02 157.036 29.2183 157.914 29.2183C158.736 29.2183 159.019 28.9917 159.019 28.34Z" fill="currentColor"/>
+<path d="M165.348 32.25V13.3517H171.638C175.066 13.3517 176.483 14.7117 176.511 17.9417V21.2283C176.483 25.62 175.293 26.8383 171.185 26.8667H169.711V32.25H165.348ZM169.711 23.4667H171.015C171.695 23.4667 171.978 23.07 171.978 22.0783V17.545C171.978 16.9217 171.751 16.7517 170.986 16.7517H169.711V23.4667Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M76.4199 0.25L73.4199 47.75H80.9199L81.4199 35.75H89.4199L89.9199 47.75H97.9199L94.4199 0.25H76.4199ZM82.4199 9.25L81.4199 26.75H89.4199L88.4199 9.25H82.4199Z" fill="currentColor"/>
+</svg>
+</a>
+        <nav class="header__top_menu">
+          <ul>
+            <li><a href="/about.html">О компании</a></li>
+            <li><a href="/contacts.html">Контакты</a></li>
+            <li><a href="/news.html">Новости</a></li>
+            <li><a href="/vakansii.html">Вакансии</a></li>
+            <li><a href="/docs.html">Документы</a></li>
+            <li><a href="/projects.html">Проекты</a></li>
+          </ul>
+        </nav>
+        <div class="header__button"><a class="button " href="#" data-hystmodal="#popup"><span>Связаться с нами</span></a>
+        </div>
+        <button class="header__burger">
+          <svg class="icon icon-burger-menu ">
+            <use href="./img/svg/sprite.svg#burger-menu" xlink:href="./img/svg/sprite.svg#burger-menu"></use>
+          </svg>
+          <svg class="icon icon-close ">
+            <use href="./img/svg/sprite.svg#close" xlink:href="./img/svg/sprite.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="header__mobile-menu container">
+        <nav class="header__mobile-menu_wrap">
+          <ul> 
+            <li><a href="/about.html">О компании</a></li>
+            <li><a href="/contacts.html">Контакты</a></li>
+            <li><a href="/news.html">Новости</a></li>
+            <li><a href="/vakansii.html">Вакансии</a></li>
+            <li><a href="/docs.html">Документы</a></li>
+            <li><a href="/projects.html">Проекты</a></li>
+          </ul>
+        </nav>
+        <div class="header__mobile-menu_button"><a class="button " href="#" data-hystmodal="#popup"><span>Связаться с нами</span></a>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="container">
+        <div class="breadcrumbs">
+          <div class="breadcrumbs__item"><a href="/">Главная</a></div>
+          <div class="breadcrumbs__slash"><span>/</span></div>
+          <div class="breadcrumbs__item"><span>Проекты</span></div>
+        </div>
+        <div class="heading-title">
+          <h1>Проекты</h1>
+        </div>
+        <div class="projects__cards"><a class="project-card " href="#" data-aspect-ratio="680/290" data-tablet-aspect-ratio="367/292">
+            <div class="project-card__image"><img data-src="https://placehold.co/680x290" alt="Текущие проекты"/></div>
+            <div class="project-card__plate"></div>
+            <div class="project-card__filter"></div>
+            <div class="project-card__name"><span>Текущие проекты</span></div>
+            <div class="project-card__num"><span>01</span></div>
+            <div class="project-card__arrow">
+              <svg class="icon icon-arrow-right ">
+                <use href="./img/svg/sprite.svg#arrow-right" xlink:href="./img/svg/sprite.svg#arrow-right"></use>
+              </svg>
+            </div></a><a class="project-card " href="#" data-aspect-ratio="680/290" data-tablet-aspect-ratio="367/292">
+            <div class="project-card__image"><img data-src="https://placehold.co/680x290" alt="Завершенные проекты"/></div>
+            <div class="project-card__plate"></div>
+            <div class="project-card__filter"></div>
+            <div class="project-card__name"><span>Завершенные проекты</span></div>
+            <div class="project-card__num"><span>02</span></div>
+            <div class="project-card__arrow">
+              <svg class="icon icon-arrow-right ">
+                <use href="./img/svg/sprite.svg#arrow-right" xlink:href="./img/svg/sprite.svg#arrow-right"></use>
+              </svg>
+            </div></a>
+        </div>
+      </div>
+    </main>
+    <div class="hystmodal" id="vakansii" aria-hidden="true">
+      <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true">
+          <div class="modal">
+            <button class="hystmodal__close" data-hystclose></button>
+            <div class="modal__top">
+              <div class="modal__title"><span>Отклик на вакансию</span></div>
+              <div class="modal__text"><span>Оставьте ваши данные и мы с вами свяжемся</span></div>
+            </div>
+            <form action="#" method="post"> 
+              <div class="modal__inputs">
+                <div class="input">
+                  <div class="input__label">
+                    <label for="last_name">Фамилия</label><span class="input__red">*</span>
+                  </div>
+                  <input type="text" name="last_name" value="" required="required" placeholder="Ваша фамилия"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="first_name">Имя</label><span class="input__red">*</span>
+                  </div>
+                  <input type="text" name="first_name" value="" required="required" placeholder="Вашe имя"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="mid_name">Отчество</label>
+                  </div>
+                  <input type="text" name="mid_name" value="" placeholder="Вашe отчество"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="phone">Телефон</label><span class="input__red">*</span>
+                  </div>
+                  <input type="text" name="phone" value="" required="required" placeholder="Ваш номер телефона"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="email">E-mail</label><span class="input__red">*</span>
+                  </div>
+                  <input type="email" name="email" value="" required="required" placeholder="Ваш e-mail"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="vakansiya">Выберите вакансию</label><span class="input__red">*</span>
+                  </div>
+                  <select name="vakansiya" required="required">
+                    <option value="0">Вакансия 1</option>
+                    <option value="1">Вакансия 2</option>
+                  </select>
+                  <div class="input__error"></div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="resume">Загрузите резюме</label><span class="input__red">*</span>
+                  </div>
+                  <div class="input-file">
+                    <div class="input-file__link">
+                      <input type="file" name="resume" id="resume" accept=".pdf, .doc, .docx" required="required"/>
+                      <label class="input-file__link-el" for="resume"><span>Прикрепить файл</span>
+                        <div class="input-file__clip">
+                          <svg class="icon icon-clip ">
+                            <use href="./img/svg/sprite.svg#clip" xlink:href="./img/svg/sprite.svg#clip"></use>
+                          </svg>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="comment">Комментарий</label>
+                  </div>
+                  <textarea name="comment" value="" placeholder="Ваш комментарий"></textarea>
+                  <div class="input__error"></div>
+                </div>
+                <div class="soglasie">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" value="value-1" required><span>Я соглашаюсь на <a href="#"> обработку моих персональных данных</a></span>
+                  </label>
+                </div>
+                <div class="modal__button">
+                  <input class="button" type="submit" value="Отправить" name="submit"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hystmodal" id="popup" aria-hidden="true">
+      <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true">
+          <div class="modal">
+            <button class="hystmodal__close" data-hystclose></button>
+            <div class="modal__top">
+              <div class="modal__title"><span>Связаться с нами</span></div>
+              <div class="modal__text"><span>Оставьте ваши данные и мы с вами свяжемся</span></div>
+            </div>
+            <form action="#" method="post"> 
+              <div class="modal__inputs">
+                <div class="input">
+                  <div class="input__label">
+                    <label for="first_name">Имя</label><span class="input__red">*</span>
+                  </div>
+                  <input type="text" name="first_name" value="" required="required" placeholder="Вашe имя"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="phone">Телефон</label><span class="input__red">*</span>
+                  </div>
+                  <input type="text" name="phone" value="" required="required" placeholder="Ваш номер телефона"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="input">
+                  <div class="input__label">
+                    <label for="email">E-mail</label><span class="input__red">*</span>
+                  </div>
+                  <input type="email" name="email" value="" required="required" placeholder="Ваш e-mail"/>
+                  <div class="input__error">error</div>
+                </div>
+                <div class="soglasie">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" value="value-1" required><span>Я соглашаюсь на <a href="#"> обработку моих персональных данных</a></span>
+                  </label>
+                </div>
+                <div class="modal__button">
+                  <input class="button" type="submit" value="Отправить" name="submit"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer__wrap container">
+        <div class="footer__top"><a class="footer__logo" href="/"><svg width="177" height="48" viewBox="0 0 177 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.0217 25.28V28.0567C10.9933 31.4 9.80333 32.4483 6.035 32.4483H4.39167C1.445 32.4483 0 31.145 0 28.3967V17.7433C0 14.5133 1.33167 13.1533 4.39167 13.1533H6.035C9.69 13.1817 10.9933 14.0317 11.0217 16.3833V19.84H6.8V17.375C6.8 16.8083 6.43167 16.5533 5.695 16.5533C4.90167 16.5533 4.53333 16.8083 4.53333 17.375V28.255C4.53333 28.7933 4.90167 29.0483 5.66667 29.0483C6.43167 29.0483 6.8 28.7933 6.8 28.255V25.28H11.0217Z" fill="currentColor"/>
+<path d="M15.5129 27.49L11.5179 13.3517H15.8246L17.6096 22.6167H17.6663L19.4229 13.3517H23.7296L19.4513 28.51C18.4596 31.7683 17.3546 32.505 13.7279 32.4483V29.0767C14.6063 29.0767 15.0029 28.85 15.2579 28.2267L15.5129 27.49Z" fill="currentColor"/>
+<path d="M24.3151 32.25V13.3517H28.6784V20.7467H31.2284V13.3517H35.5918V32.25H31.2284V24.1467H28.6784V32.25H24.3151Z" fill="currentColor"/>
+<path d="M39.6151 32.25V16.7517H36.5551V13.3517H47.0384V16.7517H43.9784V32.25H39.6151Z" fill="currentColor"/>
+<path d="M46.6358 32.25L49.4974 13.3517H56.6091L59.4991 32.25H55.0508L54.4841 27.7167H51.6508L51.0841 32.25H46.6358ZM54.1158 24.4867L53.0958 15.9583H53.0391L52.0191 24.4867H54.1158Z" fill="currentColor"/>
+<path d="M60.5297 32.25V13.3517H66.8197C70.2481 13.3517 71.6647 14.7117 71.6931 17.9417V21.2283C71.6647 25.62 70.4747 26.8383 66.3664 26.8667H64.8931V32.25H60.5297ZM64.8931 23.4667H66.1964C66.8764 23.4667 67.1597 23.07 67.1597 22.0783V17.545C67.1597 16.9217 66.9331 16.7517 66.1681 16.7517H64.8931V23.4667Z" fill="currentColor"/>
+<path d="M101.255 32.25V13.3517H107.715C111.625 13.3517 112.475 14.2017 112.475 18.0833C112.475 21.115 111.908 21.9367 109.613 22.4183V22.475C112.022 22.7583 112.787 23.8917 112.787 27.0083C112.787 30.975 111.71 32.25 108.423 32.25H101.255ZM105.618 16.5817V21.0583H106.667C107.885 21.03 108.112 20.775 108.112 19.3867V18.225C108.112 16.8933 107.857 16.5817 106.667 16.5817H105.618ZM105.618 24.1467V29.02H106.922C108.027 29.02 108.253 28.7367 108.253 27.2633V25.875C108.253 24.4867 107.998 24.1467 106.922 24.1467H105.618Z" fill="currentColor"/>
+<path d="M116.749 32.25V16.7517H113.689V13.3517H124.172V16.7517H121.112V32.25H116.749Z" fill="currentColor"/>
+<path d="M125.281 28.5667V17.035C125.281 14.23 126.868 13.1533 130.948 13.1533C135.028 13.1533 136.615 14.23 136.615 17.035V28.5667C136.615 31.3717 135.028 32.4483 130.92 32.4483C126.84 32.4483 125.281 31.3717 125.281 28.5667ZM132.081 28.34V17.2617C132.081 16.61 131.798 16.3833 130.948 16.3833C130.098 16.3833 129.815 16.5817 129.815 17.2617V28.34C129.815 29.02 130.098 29.2183 130.976 29.2183C131.798 29.2183 132.081 28.9917 132.081 28.34Z" fill="currentColor"/>
+<path d="M150.382 28.85H151.884V36.0183H147.52V32.25H141.882V36.0183H137.519V28.85H138.51C139.219 28.8783 139.417 28.51 139.417 27.1217V13.3517H150.382V28.85ZM146.019 28.85V16.7517H143.78V26.2433C143.78 27.405 143.469 28.255 142.789 28.85H146.019Z" fill="currentColor"/>
+<path d="M152.219 28.5667V17.035C152.219 14.23 153.806 13.1533 157.886 13.1533C161.966 13.1533 163.552 14.23 163.552 17.035V28.5667C163.552 31.3717 161.966 32.4483 157.857 32.4483C153.777 32.4483 152.219 31.3717 152.219 28.5667ZM159.019 28.34V17.2617C159.019 16.61 158.736 16.3833 157.886 16.3833C157.036 16.3833 156.752 16.5817 156.752 17.2617V28.34C156.752 29.02 157.036 29.2183 157.914 29.2183C158.736 29.2183 159.019 28.9917 159.019 28.34Z" fill="currentColor"/>
+<path d="M165.348 32.25V13.3517H171.638C175.066 13.3517 176.483 14.7117 176.511 17.9417V21.2283C176.483 25.62 175.293 26.8383 171.185 26.8667H169.711V32.25H165.348ZM169.711 23.4667H171.015C171.695 23.4667 171.978 23.07 171.978 22.0783V17.545C171.978 16.9217 171.751 16.7517 170.986 16.7517H169.711V23.4667Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M76.4199 0.25L73.4199 47.75H80.9199L81.4199 35.75H89.4199L89.9199 47.75H97.9199L94.4199 0.25H76.4199ZM82.4199 9.25L81.4199 26.75H89.4199L88.4199 9.25H82.4199Z" fill="currentColor"/>
+</svg>
+</a>
+          <div class="footer__contacts">
+            <div class="footer__contacts-name"><span>Отдел продаж</span></div>
+            <div class="footer__contacts-phone"><a href="tel: +79876543210">+7 (987) 654-32-10</a></div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <nav class="footer__menu">
+            <ul>
+              <li><a href="/about.html">О компании</a></li>
+              <li><a href="/contacts.html">Контакты</a></li>
+              <li><a href="/news.html">Новости</a></li>
+              <li><a href="/vakansii.html">Вакансии</a></li>
+              <li><a href="/docs.html">Документы</a></li>
+              <li><a href="/projects.html">Проекты</a></li>
+            </ul>
+          </nav>
+          <div class="footer__info"><span>ООО “Название компании” </span><span>ИНН 1234567890 </span><span>ОГРН 1234567890</span></div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/common.js"></script>
+  </body>
+</html>
