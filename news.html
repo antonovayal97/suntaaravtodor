@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,11 +43,11 @@
           </ul>
         </nav>
         <div class="header__button">
-          <div id="ytWidget"></div>
+          <div id="ytWidget" style="display: none"></div>
           <div class="header__lang">
             <div class="lang">
               <div class="lang__outside">
-                <div class="lang__country" tabindex="0" data-lang-active>
+                <div class="lang__country" tabindex="0" data-lang-active data-ya-lang="ru">
                   <div class="lang__country-flag"><img src="./img/ru.webp" alt=""></div>
                   <div class="lang__country-name"><span>Русский</span></div>
                 </div>
@@ -101,6 +101,42 @@
             <li><a href="./projects.html">Проекты</a></li>
           </ul>
         </nav>
+        <div class="header__lang-mobile">
+          <div class="lang lang--mobile">
+            <div class="lang__outside">
+              <div class="lang__country" tabindex="0" data-lang-active data-ya-lang="ru">
+                <div class="lang__country-flag"><img src="./img/ru.webp" alt=""></div>
+                <div class="lang__country-name"><span>Русский</span></div>
+              </div>
+              <div class="lang__outside-arrow">
+                <svg class="icon icon-arrow-select ">
+                  <use href="./img/svg/sprite.svg#arrow-select" xlink:href="./img/svg/sprite.svg#arrow-select"></use>
+                </svg>
+              </div>
+            </div>
+            <div class="lang__inside">
+              <div class="lang__inside-arrow"></div>
+              <div class="lang__inside-countries">
+                <div class="lang__country" data-ya-lang="ru">
+                  <div class="lang__country-flag"><img src="./img/ru.webp" alt=""></div>
+                  <div class="lang__country-name"><span>Русский</span></div>
+                </div>
+                <div class="lang__country" data-ya-lang="ky">
+                  <div class="lang__country-flag"><img src="./img/kg.webp" alt=""></div>
+                  <div class="lang__country-name"><span>Кыргызча</span></div>
+                </div>
+                <div class="lang__country" data-ya-lang="uz">
+                  <div class="lang__country-flag"><img src="./img/uz.webp" alt=""></div>
+                  <div class="lang__country-name"><span>O'zbek</span></div>
+                </div>
+                <div class="lang__country" data-ya-lang="tg">
+                  <div class="lang__country-flag"><img src="./img/tj.webp" alt=""></div>
+                  <div class="lang__country-name"><span>Тоҷикӣ</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="header__mobile-menu_button"><a class="button " href="#" data-hystmodal="#popup"><span>Связаться с нами</span></a>
         </div>
       </div>
@@ -258,7 +294,7 @@
                   </div>
                 </div>
                 <div class="modal__button">
-                  <input class="button" type="submit" value="Отправить" name="submit"/>
+                  <button class="button" type="submit" name="submit">Отправить</button>
                 </div>
               </div>
             </form>
@@ -310,7 +346,7 @@
                   </div>
                 </div>
                 <div class="modal__button">
-                  <input class="button" type="submit" value="Отправить" name="submit"/>
+                  <button class="button" type="submit" name="submit">Отправить</button>
                 </div>
               </div>
             </form>

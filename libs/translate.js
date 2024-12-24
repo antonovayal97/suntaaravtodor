@@ -19,17 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function yaTranslateInit() {
 
-    if (localStorage.getItem('yt-widget')) {
+    //if (localStorage.getItem('yt-widget')) {
         /* Если установлен язык перевода для первого посещения и в localStorage нет yt-widget */
         /* If the translation language is installed for the first visit and in localStorage no yt-widget */
         //yaTranslateSetLang(localStorage.getItem('yt-widget').lang);
-        yatranslate.lang = JSON.parse(localStorage["yt-widget"]).lang;
-    }
+        //yatranslate.lang = JSON.parse(localStorage["yt-widget"]).lang;
+    //}
 
     // Подключаем виджет yandex translate
     // Connecting the yandex translate widget
     let script = document.createElement('script');
-    script.src = `https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=${yatranslate.lang}&widgetTheme=light&autoMode=false`;
+    script.src = `https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=ru&widgetTheme=light&autoMode=false`;
     document.getElementsByTagName('head')[0].appendChild(script);
 
     // Получаем и записываем язык на который переводим
@@ -43,7 +43,9 @@ function yaTranslateInit() {
     // Вешаем событие клик на флаги
     // We hang the event click on the flags
     yaTranslateEventHandler('click', '[data-ya-lang]', function (el) {
-        yaTranslateSetLang(document.querySelector("[data-lang-active]").getAttribute('data-ya-lang'));
+        let parent = el.closest(".lang");
+        let outside = parent.querySelector("[data-lang-active]");
+        yaTranslateSetLang(outside.getAttribute('data-ya-lang'));
         // Перезагружаем страницу
         // Reloading the page
         window.location.reload();
@@ -69,15 +71,21 @@ function yaTranslateHtmlHandler(code) {
     // Получаем язык на который переводим и производим необходимые манипуляции с DOM
     // We get the language to which we translate and produce the necessary manipulations with DOM 
 
-    let countries = document.querySelector(".lang__inside-countries");
+    let langs = document.querySelectorAll(".lang");
+    langs.forEach((lang) => {
+        let countries = lang.querySelector(".lang__inside-countries");
 
-    let targetCountry = countries.querySelector('[data-ya-lang="' + code + '"]');
+        let targetCountry = countries.querySelector('[data-ya-lang="' + code + '"]');
 
-    document.querySelector('[data-lang-active]').innerHTML = targetCountry.innerHTML;
+        lang.querySelector('[data-lang-active]').innerHTML = targetCountry.innerHTML;
+    
+        lang.querySelector('[data-lang-active]').setAttribute("data-ya-lang", code);
+    
+        targetCountry.remove();
+    })
 
-    document.querySelector('[data-lang-active]').setAttribute("data-ya-lang", code);
 
-    targetCountry.remove();
+
 }
 
 function yaTranslateEventHandler(event, selector, handler) {

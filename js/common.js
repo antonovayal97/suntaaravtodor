@@ -265,57 +265,60 @@ document.addEventListener("DOMContentLoaded",(event) => {
     }
     
     function initLangSelect() {
-        var select = document.querySelector(".header__lang .lang");
-        var outside = select.querySelector(".lang__country[tabindex]");
-        var outsideFlag = outside.querySelector(".lang__country-flag img");
-        var outsideName = outside.querySelector(".lang__country-name span");
-        var insideCountries = select.querySelectorAll(".lang__inside-countries .lang__country");
-        var outsideArrow = select.querySelector(".lang__outside-arrow .icon");
-    
-        // Открытие/закрытие выпадающего списка
-        outside.addEventListener("click", (event) => {
-            event.stopPropagation();
-            select.classList.toggle("lang--active");
-        });
-    
-        outsideArrow.addEventListener("click", (event) => {
-            event.stopPropagation();
-            select.classList.toggle("lang--active");
-        });
-    
-        // Выбор внутреннего языка
-        insideCountries.forEach((country) => {
-            country.addEventListener("click", () => {
-                // Получение данных выбранной внутренней страны
-                var selectedFlag = country.querySelector(".lang__country-flag img").src;
-                var selectedName = country.querySelector(".lang__country-name span").textContent;
-                var selectedLang = country.getAttribute("data-ya-lang");
-    
-                // Получение данных внешней страны
-                var outsideFlagSrc = outsideFlag.src;
-                var outsideNameText = outsideName.textContent;
-                var outsideLang = outside.getAttribute("data-ya-lang");
-    
-                // Обмен местами данных
-                country.querySelector(".lang__country-flag img").src = outsideFlagSrc;
-                country.querySelector(".lang__country-name span").textContent = outsideNameText;
-                country.setAttribute("data-ya-lang", outsideLang);
-    
-                outsideFlag.src = selectedFlag;
-                outsideName.textContent = selectedName;
-                outside.setAttribute("data-ya-lang", selectedLang);
-    
-                // Закрытие выпадающего списка
-                select.classList.remove("lang--active");
+        var selects = document.querySelectorAll(".lang");
+
+        selects.forEach((select) => {
+            var outside = select.querySelector(".lang__country[tabindex]");
+            var outsideFlag = outside.querySelector(".lang__country-flag img");
+            var outsideName = outside.querySelector(".lang__country-name span");
+            var insideCountries = select.querySelectorAll(".lang__inside-countries .lang__country");
+            var outsideArrow = select.querySelector(".lang__outside-arrow .icon");
+        
+            // Открытие/закрытие выпадающего списка
+            outside.addEventListener("click", (event) => {
+                event.stopPropagation();
+                select.classList.toggle("lang--active");
             });
-        });
-    
-        // Закрытие списка при клике вне
-        document.addEventListener("click", (event) => {
-            if (!select.contains(event.target)) {
-                select.classList.remove("lang--active");
-            }
-        });
+        
+            outsideArrow.addEventListener("click", (event) => {
+                event.stopPropagation();
+                select.classList.toggle("lang--active");
+            });
+        
+            // Выбор внутреннего языка
+            insideCountries.forEach((country) => {
+                country.addEventListener("click", () => {
+                    // Получение данных выбранной внутренней страны
+                    var selectedFlag = country.querySelector(".lang__country-flag img").src;
+                    var selectedName = country.querySelector(".lang__country-name span").textContent;
+                    var selectedLang = country.getAttribute("data-ya-lang");
+        
+                    // Получение данных внешней страны
+                    var outsideFlagSrc = outsideFlag.src;
+                    var outsideNameText = outsideName.textContent;
+                    var outsideLang = outside.getAttribute("data-ya-lang");
+        
+                    // Обмен местами данных
+                    country.querySelector(".lang__country-flag img").src = outsideFlagSrc;
+                    country.querySelector(".lang__country-name span").textContent = outsideNameText;
+                    country.setAttribute("data-ya-lang", outsideLang);
+        
+                    outsideFlag.src = selectedFlag;
+                    outsideName.textContent = selectedName;
+                    outside.setAttribute("data-ya-lang", selectedLang);
+        
+                    // Закрытие выпадающего списка
+                    select.classList.remove("lang--active");
+                });
+            });
+        
+            // Закрытие списка при клике вне
+            document.addEventListener("click", (event) => {
+                if (!select.contains(event.target)) {
+                    select.classList.remove("lang--active");
+                }
+            });
+        })
     }
     
     
