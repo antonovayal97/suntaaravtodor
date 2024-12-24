@@ -12,6 +12,7 @@
     <script src="libs/swiper-bundle.min.js"></script>
     <script src="libs/hystmodal.min.js"></script>
     <script src="libs/custom-select.min.js"></script>
+    <script src="libs/translate.js"></script><script src="https://unpkg.com/imask"></script>
   </head>
   <body>
     <header class="header">
@@ -41,7 +42,43 @@
             <li><a href="./projects.html">Проекты</a></li>
           </ul>
         </nav>
-        <div class="header__button"><a class="button " href="#" data-hystmodal="#popup"><span>Связаться с нами</span></a>
+        <div class="header__button">
+          <div class="header__lang">
+            <div class="lang">
+              <div class="lang__outside">
+                <div class="lang__country" tabindex="0" data-lang-active data-ya-lang="ru">
+                  <div class="lang__country-flag"><img src="./img/ru.webp" alt=""></div>
+                  <div class="lang__country-name"><span>Русский</span></div>
+                </div>
+                <div class="lang__outside-arrow">
+                  <svg class="icon icon-arrow-select ">
+                    <use href="./img/svg/sprite.svg#arrow-select" xlink:href="./img/svg/sprite.svg#arrow-select"></use>
+                  </svg>
+                  <div class="lang__inside">
+                    <div class="lang__inside-arrow"></div>
+                    <div class="lang__inside-countries">
+                      <div class="lang__country" data-ya-lang="ru">
+                        <div class="lang__country-flag"><img src="./img/ru.webp" alt=""></div>
+                        <div class="lang__country-name"><span>Русский</span></div>
+                      </div>
+                      <div class="lang__country" data-ya-lang="ky">
+                        <div class="lang__country-flag"><img src="./img/kg.webp" alt=""></div>
+                        <div class="lang__country-name"><span>Кыргызча</span></div>
+                      </div>
+                      <div class="lang__country" data-ya-lang="uz">
+                        <div class="lang__country-flag"><img src="./img/uz.webp" alt=""></div>
+                        <div class="lang__country-name"><span>O'zbek</span></div>
+                      </div>
+                      <div class="lang__country" data-ya-lang="tg">
+                        <div class="lang__country-flag"><img src="./img/tj.webp" alt=""></div>
+                        <div class="lang__country-name"><span>Тоҷикӣ</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><a class="button " href="#" data-hystmodal="#popup"><span>Связаться с нами</span></a>
         </div>
         <button class="header__burger">
           <svg class="icon icon-burger-menu ">
@@ -150,42 +187,47 @@
               <div class="modal__title"><span>Отклик на вакансию</span></div>
               <div class="modal__text"><span>Оставьте ваши данные и мы с вами свяжемся</span></div>
             </div>
-            <form action="#" method="post"> 
+            <form action="#" method="post" data-form novalidate> 
               <div class="modal__inputs">
                 <div class="input">
                   <div class="input__label">
                     <label for="last_name">Фамилия</label><span class="input__red">*</span>
                   </div>
                   <input type="text" name="last_name" value="" required="required" placeholder="Ваша фамилия"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="input">
                   <div class="input__label">
                     <label for="first_name">Имя</label><span class="input__red">*</span>
                   </div>
                   <input type="text" name="first_name" value="" required="required" placeholder="Вашe имя"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="input">
                   <div class="input__label">
                     <label for="mid_name">Отчество</label>
                   </div>
                   <input type="text" name="mid_name" value="" placeholder="Вашe отчество"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="input">
                   <div class="input__label">
                     <label for="phone">Телефон</label><span class="input__red">*</span>
                   </div>
                   <input type="text" name="phone" value="" required="required" placeholder="Ваш номер телефона"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="input">
                   <div class="input__label">
                     <label for="email">E-mail</label><span class="input__red">*</span>
                   </div>
                   <input type="email" name="email" value="" required="required" placeholder="Ваш e-mail"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="input">
                   <div class="input__label">
@@ -195,15 +237,15 @@
                     <option value="0">Вакансия 1</option>
                     <option value="1">Вакансия 2</option>
                   </select>
-                  <div class="input__error"></div>
+                  <div class="input__error">Заполните обязательное поле</div>
                 </div>
                 <div class="input">
                   <div class="input__label">
-                    <label for="resume">Загрузите резюме</label><span class="input__red">*</span>
+                    <label for="resume">Загрузите резюме (pdf, doc, csv)</label><span class="input__red">*</span>
                   </div>
                   <div class="input-file">
                     <div class="input-file__link">
-                      <input type="file" name="resume" id="resume" accept=".pdf, .doc, .docx" required="required"/>
+                      <input type="file" name="resume" id="resume" accept=".pdf, .doc, .docx, .csv" required="required"/>
                       <label class="input-file__link-el" for="resume"><span>Прикрепить файл</span>
                         <div class="input-file__clip">
                           <svg class="icon icon-clip ">
@@ -213,18 +255,22 @@
                       </label>
                     </div>
                   </div>
+                  <div class="input__error">Заполните обязательное поле</div>
                 </div>
                 <div class="input">
                   <div class="input__label">
                     <label for="comment">Комментарий</label>
                   </div>
                   <textarea name="comment" value="" placeholder="Ваш комментарий"></textarea>
-                  <div class="input__error"></div>
+                  <div class="input__error">Заполните обязательное поле</div>
                 </div>
                 <div class="soglasie">
-                  <label class="custom-checkbox">
-                    <input type="checkbox" value="value-1" required><span>Я соглашаюсь на <a href="#"> обработку моих персональных данных</a></span>
-                  </label>
+                  <div class="input">
+                    <label class="custom-checkbox">
+                      <input type="checkbox" value="value-1" required><span>Я соглашаюсь на <a href="#"> обработку моих персональных данных</a></span>
+                    </label>
+                    <div class="input__error">Требуется согласие</div>
+                  </div>
                 </div>
                 <div class="modal__button">
                   <input class="button" type="submit" value="Отправить" name="submit"/>
@@ -244,33 +290,39 @@
               <div class="modal__title"><span>Связаться с нами</span></div>
               <div class="modal__text"><span>Оставьте ваши данные и мы с вами свяжемся</span></div>
             </div>
-            <form action="#" method="post"> 
+            <form action="#" method="post" data-form novalidate> 
               <div class="modal__inputs">
                 <div class="input">
                   <div class="input__label">
                     <label for="first_name">Имя</label><span class="input__red">*</span>
                   </div>
                   <input type="text" name="first_name" value="" required="required" placeholder="Вашe имя"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="input">
                   <div class="input__label">
                     <label for="phone">Телефон</label><span class="input__red">*</span>
                   </div>
                   <input type="text" name="phone" value="" required="required" placeholder="Ваш номер телефона"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="input">
                   <div class="input__label">
                     <label for="email">E-mail</label><span class="input__red">*</span>
                   </div>
                   <input type="email" name="email" value="" required="required" placeholder="Ваш e-mail"/>
-                  <div class="input__error">error</div>
+                  <div class="input__error">Заполните обязательное поле
+                  </div>
                 </div>
                 <div class="soglasie">
-                  <label class="custom-checkbox">
-                    <input type="checkbox" value="value-1" required><span>Я соглашаюсь на <a href="#"> обработку моих персональных данных</a></span>
-                  </label>
+                  <div class="input">
+                    <label class="custom-checkbox">
+                      <input type="checkbox" value="value-1" required><span>Я соглашаюсь на <a href="#"> обработку моих персональных данных</a></span>
+                    </label>
+                    <div class="input__error">Требуется согласие</div>
+                  </div>
                 </div>
                 <div class="modal__button">
                   <input class="button" type="submit" value="Отправить" name="submit"/>

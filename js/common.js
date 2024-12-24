@@ -139,6 +139,10 @@ document.addEventListener("DOMContentLoaded",(event) => {
         ymaps.ready(initYandexMap);
     }
     function initYandexMap() {
+        if(!document.querySelector("#map"))
+        {
+            return;
+        }
        // Создаём карту с минимальными элементами управления.
         var myMap = new ymaps.Map("map", {
             center: [62.15185684718649,117.62526187623983], // Координаты центра карты.
@@ -155,6 +159,169 @@ document.addEventListener("DOMContentLoaded",(event) => {
         });
         myMap.geoObjects.add(myPlacemark);
     }
+
+    function initMask()
+    {
+        var phones = document.querySelectorAll('input[name="phone"]');
+        phones.forEach((phone) => {
+            IMask(phone, {
+                mask: [
+                  {
+                    mask: '+000 00 0000000',
+                    startsWith: '998',
+                    lazy: false,
+                    country: 'Узбекистан'
+                  },
+                  {
+                    mask: '+000-00-000-0000',
+                    startsWith: '992',
+                    lazy: false,
+                    country: 'Таджикистан'
+                  },
+                  {
+                    mask: '+000 (000) 000-000',
+                    startsWith: '996',
+                    lazy: false,
+                    country: 'Кыргызстан'
+                  },
+                  {
+                    mask: '+0 (000) 000-00-00',
+                    startsWith: '7',
+                    lazy: false,
+                    country: 'Russia'
+                  },
+                  {
+                    mask: '0000000000000',
+                    startsWith: '',
+                    country: 'Страна не определена'
+                  }
+                ],
+                dispatch: (appended, dynamicMasked) => {
+                  const number = (dynamicMasked.value + appended).replace(/\D/g,'');
+              
+                  return dynamicMasked.compiledMasks.find(m => number.indexOf(m.startsWith) === 0);
+                }
+              })
+              //.on('accept', function() {
+              //  document.getElementById('dispatch-value').innerHTML = dispatchMask.masked.currentMask.country;
+              //});
+        })
+    }
+
+    function initForms() {
+        const allForms = document.querySelectorAll('form[data-form]');
+        allForms.forEach((form) => {
+            form.addEventListener('submit', function (event) {
+                const inputs = form.querySelectorAll('input[required]'); // Все обязательные input
+                let isValid = true;
+                inputs.forEach((input) => {
+
+                    const parent = input.closest('.input');
+
+
+                    // Событие ввода
+                    input.addEventListener('input', () => {
+                        if (parent) {
+                            if (input.checkValidity()) {
+                                parent.classList.remove('error'); // Убираем класс ошибки
+                            } else {
+                                parent.classList.add('error'); // Добавляем класс ошибки
+                            }
+                        }
+                    });
+
+
+                    //const errorMessage = input.nextElementSibling;
+    
+                    // Сброс предыдущего состояния
+                    parent.classList.remove('error');
+    
+                    // Проверяем валидность
+                    if (input.type === 'file') {
+                        // Проверка для файлового ввода
+                        if (!input.files || input.files.length === 0) {
+                            isValid = false;
+                            parent.classList.add('error');
+                        }
+                    } else if (input.type === 'checkbox') {
+                        if(!input.checked)
+                        {
+                            isValid = false;
+                            parent.classList.add('error');
+                        }
+                    } else if (!input.checkValidity()) {
+                        // Проверка для остальных типов
+                        isValid = false;
+                        parent.classList.add('error');
+                    }
+                });
+    
+                // Если форма невалидна, предотвращаем отправку
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    }
+    
+    function initLangSelect() {
+        var select = document.querySelector(".header__lang .lang");
+        var outside = select.querySelector(".lang__country[tabindex]");
+        var outsideFlag = outside.querySelector(".lang__country-flag img");
+        var outsideName = outside.querySelector(".lang__country-name span");
+        var insideCountries = select.querySelectorAll(".lang__inside-countries .lang__country");
+        var outsideArrow = select.querySelector(".lang__outside-arrow .icon");
+    
+        // Открытие/закрытие выпадающего списка
+        outside.addEventListener("click", (event) => {
+            event.stopPropagation();
+            select.classList.toggle("lang--active");
+        });
+    
+        outsideArrow.addEventListener("click", (event) => {
+            event.stopPropagation();
+            select.classList.toggle("lang--active");
+        });
+    
+        // Выбор внутреннего языка
+        insideCountries.forEach((country) => {
+            country.addEventListener("click", () => {
+                // Получение данных выбранной внутренней страны
+                var selectedFlag = country.querySelector(".lang__country-flag img").src;
+                var selectedName = country.querySelector(".lang__country-name span").textContent;
+                var selectedLang = country.getAttribute("data-ya-lang");
+    
+                // Получение данных внешней страны
+                var outsideFlagSrc = outsideFlag.src;
+                var outsideNameText = outsideName.textContent;
+                var outsideLang = outside.getAttribute("data-ya-lang");
+    
+                // Обмен местами данных
+                country.querySelector(".lang__country-flag img").src = outsideFlagSrc;
+                country.querySelector(".lang__country-name span").textContent = outsideNameText;
+                country.setAttribute("data-ya-lang", outsideLang);
+    
+                outsideFlag.src = selectedFlag;
+                outsideName.textContent = selectedName;
+                outside.setAttribute("data-ya-lang", selectedLang);
+    
+                // Закрытие выпадающего списка
+                select.classList.remove("lang--active");
+            });
+        });
+    
+        // Закрытие списка при клике вне
+        document.addEventListener("click", (event) => {
+            if (!select.contains(event.target)) {
+                select.classList.remove("lang--active");
+            }
+        });
+    }
+    
+    
+    
+    
+
     function init()
     {
         mobileMenu();
@@ -165,6 +332,9 @@ document.addEventListener("DOMContentLoaded",(event) => {
         initModals();
         initFileInput();
         initMaps();
+        initMask();
+        initForms();
+        initLangSelect();
     }
 
     function onWindowResize()
